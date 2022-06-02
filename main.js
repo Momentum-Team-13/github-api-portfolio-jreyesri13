@@ -1,6 +1,7 @@
 console.log('js is connected!')
 
-let gitHubUrl = "https://api.github.com/users/jreyesri13"
+const profile = document.querySelector('#profile')
+let gitHubUrl = "https://api.github.com/users/jreyesri13/repos"
 
 fetch(gitHubUrl, {
     method: 'GET',
@@ -19,8 +20,33 @@ fetch(gitHubUrl, {
 
     })
 
+// function buildProfile(profileData) {
+//     console.log(profileData)
+//     // create elements and add them to the page
+//     // profileData is the data from the promise
+// }
+
+
 function buildProfile(profileData) {
-    console.log(profileData)
+    profileData.map(function (repo) {
+        profile.appendChild(buildRepoElement(repo.name))
+    })
     // create elements and add them to the page
     // profileData is the data from the promise
+}
+
+function buildProfileLoop(profileData) {
+    // equivalent to buildProfile but uses loops
+
+    for (let repo of profileData) {
+        profile.appendChild(buildRepoElement(repo.name))
+    }
+}
+
+
+function buildRepoElement(name) {
+    let el = document.createElement('p')
+    el.innerText = name;
+    return el
+    // returns a new element for a repo, like a customer
 }
