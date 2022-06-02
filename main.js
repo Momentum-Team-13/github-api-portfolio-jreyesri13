@@ -1,6 +1,6 @@
 console.log('js is connected!')
 
-// let gitHubUrl = 
+let gitHubUrl = "https://api.github.com/users/jreyesri13"
 
 fetch(gitHubUrl, {
     method: 'GET',
