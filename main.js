@@ -26,9 +26,28 @@ fetch(githubUrl, {
 
 
 
+// function buildProfile(profData) {
+//     let profileEl = document.createElement('div')
+
+//     let imageElement = document.createElement('img')
+//     imageElement.src = profData.avatar_url
+//     imageElement.alt = 'Image of Jose Reyes'
+//     profileEl.appendChild(imageElement)
+
+
+//     let nameElement = document.createElement('h1')
+//     nameElement.innerText = `${profData.name}`
+//     profileEl.appendChild(nameElement)
+
+//     profileInfo.appendChild(profileEl)
+
+// }
+
+
+
 function buildProfile(profileData) {
     let profileElement = document.createElement('div')
-    // customerElement.classList.add('customer')
+    // profileElement.classList.add('topStyle')
 
 
     let imageElement = document.createElement('img')
@@ -38,24 +57,25 @@ function buildProfile(profileData) {
 
 
     let nameElement = document.createElement('h1')
+    nameElement.classList.add('nameStyle')
     nameElement.innerText = `${profileData.name}`
     profileElement.appendChild(nameElement)
 
 
     let usernameElement = document.createElement('p')
-    usernameElement.classList.add("topStyle")
+    // usernameElement.classList.add("topStyle")
     usernameElement.innerText = `GitHub Username: ${profileData.login}`
     profileElement.appendChild(usernameElement)
 
 
     let urlElement = document.createElement('p')
-    urlElement.classList.add("topStyle")
+    // urlElement.classList.add("topStyle")
     urlElement.innerText = `GitHub URL: `
     profileElement.appendChild(urlElement)
 
 
     let urlLink = document.createElement('a')
-    urlLink.classList.add("topStyle")
+    // urlLink.classList.add("topStyle")
     urlLink.href = profileData.html_url
     urlLink.target = `_blank`
     urlLink.innerText = `${profileData.login}`
@@ -98,6 +118,7 @@ function buildRepos(repoData) {
 
 
 let titleElement = document.createElement('h2')
+titleElement.classList.add('titleStyle')
 titleElement.innerText = `GitHub Repos`
 reposInfo.appendChild(titleElement)
 
@@ -105,12 +126,8 @@ reposInfo.appendChild(titleElement)
 
 function buildRepoElement(repoName) {
     let repoElement = document.createElement('div')
+    repoElement.classList.add('repoStyle')
     // customerElement.classList.add('customer')
-
-
-    // let titleElement = document.createElement('h2')
-    // titleElement.innerText = `GitHub Repos` 
-    // repoElement.appendChild(titleElement)
 
     let repoUrl = document.createElement('a')
     // repoUrl.classList.add("topStyle")
@@ -118,7 +135,6 @@ function buildRepoElement(repoName) {
     repoUrl.href = repoName.html_url
     repoUrl.target = `_blank`
     repoElement.appendChild(repoUrl)
-
 
     reposInfo.appendChild(repoElement)
 }
