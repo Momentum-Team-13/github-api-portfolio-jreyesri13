@@ -97,6 +97,12 @@ function buildRepos(repoData) {
 }
 
 
+let titleElement = document.createElement('h2')
+titleElement.innerText = `GitHub Repos`
+reposInfo.appendChild(titleElement)
+
+
+
 function buildRepoElement(repoName) {
     let repoElement = document.createElement('div')
     // customerElement.classList.add('customer')
@@ -106,13 +112,13 @@ function buildRepoElement(repoName) {
     // titleElement.innerText = `GitHub Repos` 
     // repoElement.appendChild(titleElement)
 
-
     let repoUrl = document.createElement('a')
+    // repoUrl.classList.add("topStyle")
     repoUrl.innerText = repoName.name
     repoUrl.href = repoName.html_url
     repoUrl.target = `_blank`
     repoElement.appendChild(repoUrl)
 
-    
+
     reposInfo.appendChild(repoElement)
 }
