@@ -1,3 +1,19 @@
 #repos {
+    /* border: 3px solid rgb(36, 138, 185); */
+}
+
+#profile {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.topStyle {
     border: 3px solid rgb(36, 138, 185);
+}
+
+img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }

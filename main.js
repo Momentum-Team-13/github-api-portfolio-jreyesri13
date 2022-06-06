@@ -30,37 +30,63 @@ function buildProfile(profileData) {
     let profileElement = document.createElement('div')
     // customerElement.classList.add('customer')
     
+    
     let imageElement = document.createElement('img')
-    imageElement.src = customer.picture.large
-    imageElement.alt = 'image of customer'
-    customerElement.appendChild(imageElement)
+    imageElement.src = profileData.avatar_url
+    imageElement.alt = 'Image of Jose Reyes'
+    profileElement.appendChild(imageElement)
     
     
+    let nameElement = document.createElement('h2')
+    nameElement.innerText = `${profileData.name}`
+    profileElement.appendChild(nameElement)
+
+    
+    let usernameElement = document.createElement('p')
+    usernameElement.classList.add("topStyle")
+    usernameElement.innerText = `GitHub Username: ${profileData.login}`
+    profileElement.appendChild(usernameElement)
+    
+    
+    let urlElement = document.createElement('p')
+    urlElement.classList.add("topStyle")
+    urlElement.innerText = `GitHub URL: `
+    profileElement.appendChild(urlElement)
+
+
+    let urlLink = document.createElement('a')
+    urlLink.classList.add("topStyle")
+    urlLink.href = profileData.html_url
+    urlLink.target = `_blank`
+    urlLink.innerText = `${profileData.login}`
+    profileElement.appendChild(urlLink)
+
+
     profileInfo.appendChild(profileElement)
 
 }
 
 
 
-// const reposInfo = document.querySelector('#repos')
+const reposInfo = document.querySelector('#repos')
 
 
-// fetch(githubReposUrl, {
-//     method: 'GET',
-//     headers: { 'Content-Type': 'application/json' }
-// })
-//     .then(function (response) {
-//         // the response is the promised data
-//         return response.json()
-//         // put the response in JSON format
-//     })
-//     .then(function (data) {
-//         // data refers to what the above promise returned (response.json())
-//         console.log("Response from GitHub API: ", data)
-//         // console log the data
-//         buildProfile(data)
+fetch(githubReposUrl, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+})
+    .then(function (response) {
+        // the response is the promised data
+        return response.json()
+        // put the response in JSON format
+    })
+    .then(function (data) {
+        // data refers to what the above promise returned (response.json())
+        console.log("Response from GitHub API: ", data)
+        // console log the data
+        buildProfile(data)
 
-//     })
+    })
 
 // // function buildProfile(profileData) {
 // //     console.log(profileData)
