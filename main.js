@@ -29,25 +29,25 @@ fetch(githubUrl, {
 function buildProfile(profileData) {
     let profileElement = document.createElement('div')
     // customerElement.classList.add('customer')
-    
-    
+
+
     let imageElement = document.createElement('img')
     imageElement.src = profileData.avatar_url
     imageElement.alt = 'Image of Jose Reyes'
     profileElement.appendChild(imageElement)
-    
-    
-    let nameElement = document.createElement('h2')
+
+
+    let nameElement = document.createElement('h1')
     nameElement.innerText = `${profileData.name}`
     profileElement.appendChild(nameElement)
 
-    
+
     let usernameElement = document.createElement('p')
     usernameElement.classList.add("topStyle")
     usernameElement.innerText = `GitHub Username: ${profileData.login}`
     profileElement.appendChild(usernameElement)
-    
-    
+
+
     let urlElement = document.createElement('p')
     urlElement.classList.add("topStyle")
     urlElement.innerText = `GitHub URL: `
@@ -84,37 +84,35 @@ fetch(githubReposUrl, {
         // data refers to what the above promise returned (response.json())
         console.log("Response from GitHub API: ", data)
         // console log the data
-        buildProfile(data)
+        buildRepos(data)
 
     })
 
-// // function buildProfile(profileData) {
-// //     console.log(profileData)
-// //     // create elements and add them to the page
-// //     // profileData is the data from the promise
-// // }
 
 
-// function buildProfile(profileData) {
-//     profileData.map(function (repo) {
-//         reposInfo.appendChild(buildRepoElement(repo.name))
-//     })
-//     // create elements and add them to the page
-//     // profileData is the data from the promise
-// }
-
-// function buildProfileLoop(profileData) {
-//     // equivalent to buildProfile but uses loops
-
-//     for (let repo of profileData) {
-//         reposInfo.appendChild(buildRepoElement(repo.name))
-//     }
-// }
+function buildRepos(repoData) {
+    for (let repo of repoData) {
+        buildRepoElement(repo)
+    }
+}
 
 
-// function buildRepoElement(name) {
-//     let el = document.createElement('p')
-//     el.innerText = name;
-//     return el
-//     // returns a new element for a repo, like a customer
-// }
+function buildRepoElement(repoName) {
+    let repoElement = document.createElement('div')
+    // customerElement.classList.add('customer')
+
+
+    // let titleElement = document.createElement('h2')
+    // titleElement.innerText = `GitHub Repos` 
+    // repoElement.appendChild(titleElement)
+
+
+    let repoUrl = document.createElement('a')
+    repoUrl.innerText = repoName.name
+    repoUrl.href = repoName.html_url
+    repoUrl.target = `_blank`
+    repoElement.appendChild(repoUrl)
+
+    
+    reposInfo.appendChild(repoElement)
+}
