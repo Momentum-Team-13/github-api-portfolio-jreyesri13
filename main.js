@@ -1,9 +1,18 @@
 console.log('js is connected!')
 
-const profile = document.querySelector('#profile')
-let gitHubUrl = "https://api.github.com/users/jreyesri13/repos"
+let githubUrl = "https://api.github.com/users/jreyesri13"
 
-fetch(gitHubUrl, {
+let githubReposUrl = "https://api.github.com/users/jreyesri13/repos"
+
+
+
+// const profile = document.querySelector('#repos')
+
+// const reposData = document.querySelector('#repos')
+
+const profile = document.querySelector('#profile')
+
+fetch(githubReposUrl, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
 })
